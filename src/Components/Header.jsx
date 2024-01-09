@@ -6,8 +6,10 @@ import { app } from "../firebase.config";
 
 import Avatar from "../img/avatar.png";
 import { motion } from "framer-motion";
-import { Scale } from "@mui/icons-material";
+// import { Scale } from "@mui/icons-material";
 import { Link } from "react-router-dom";
+import { useStateValue } from "../Context/StateProvider";
+import { actionType } from "../Context/reducer";
 
 const Header = () => {
   const HEADER_MENU = [
@@ -30,9 +32,15 @@ const Header = () => {
   ];
   const firebaseAuth = getAuth(app);
   const provider = new GoogleAuthProvider();
+
+  const [{user},dispatch]=useStateValue()
   const login = async () => {
-    const response = await signInWithPopup(firebaseAuth, provider);
-    console.log(response);
+    const {user : {refreshToken,providerDate}} = await signInWithPopup(firebaseAuth, provider);
+    dispatch({
+      type : actionType.SET_USER,
+      user : providerDate[0]
+    })
+    
   };
 
   return (
