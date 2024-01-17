@@ -1,57 +1,27 @@
-import React, { useEffect, useRef, useState } from "react";
-import HomeContainer from "./HomeContainer";
-import { motion } from "framer-motion";
-import { MdChevronLeft, MdChevronRight } from "react-icons/md";
-import RowContainer from "./RowContainer";
-import { useStateValue } from "../Context/StateProvider";
-import MenuContainer from "./MenuContainer";
-import CartContainer from "./CartContainer";
+import React from 'react'
+import Delivery from '../img/delivery.png'
 
 const MainContainer = () => {
-  const [{ foodItems, cartShow }, dispatch] = useStateValue();
-  const [scrollValue, setScrollValue] = useState(0);
-
-  useEffect(() => {}, [scrollValue, cartShow]);
-
   return (
-    <div className="w-full h-auto flex flex-col items-center justify-center ">
-      <HomeContainer />
-
-      <section className="w-full my-6">
-        <div className="w-full flex items-center justify-between">
-          <p className="text-2xl font-semibold capitalize text-headingColor relative before:absolute before:rounded-lg before:content before:w-32 before:h-1 before:-bottom-2 before:left-0 before:bg-gradient-to-tr from-orange-400 to-orange-600 transition-all ease-in-out duration-100">
-            Our fresh & healthy fruits
-          </p>
-
-          <div className="hidden md:flex gap-3 items-center">
-            <motion.div
-              whileTap={{ scale: 0.75 }}
-              className="w-8 h-8 rounded-lg bg-orange-300 hover:bg-orange-500 cursor-pointer  hover:shadow-lg flex items-center justify-center"
-              onClick={() => setScrollValue(-200)}
-            >
-              <MdChevronLeft className="text-lg text-white" />
-            </motion.div>
-            <motion.div
-              whileTap={{ scale: 0.75 }}
-              className="w-8 h-8 rounded-lg bg-orange-300 hover:bg-orange-500 cursor-pointer transition-all duration-100 ease-in-out hover:shadow-lg flex items-center justify-center"
-              onClick={() => setScrollValue(200)}
-            >
-              <MdChevronRight className="text-lg text-white" />
-            </motion.div>
+    <div className='grid grid-cols-1 md:grid-cols-2 gap-2;'>
+      <div className='py-2 flex-1 flex flex-col items-start md:justify-start gap-6 '>
+        <div className='flex items-center gap-2 justify-center bg-orange-100 px-4 py-1 rounded-full'>
+          <p className='text-base text-orange-500 font-semibold'>Bike delivery</p>
+          <div className='w-10 h-10 bg-white rounded-full overflow-hidden drop-shadow-xl'>
+            <img src={Delivery}
+            className='w-full h-full object-contain' alt="delivery" />
           </div>
         </div>
-        <RowContainer
-          scrollValue={scrollValue}
-          flag={true}
-          data={foodItems?.filter((n) => n.category === "fruits")}
-        />
-      </section>
+        <p className='text-[2.5rem] md:text-[4.5rem] font-bold tracking-wide text-headingColor '>The Fastest delivery in{" "} <span className='text-orange-600 text-[3rem] md:text-[5rem]'>your city</span> </p>
+        <p className='text-base  text-textColor text-center md:text-left md:w-[80%]'>
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quo tenetur nisi facilis dolore ab exercitationem sequi doloremque tempore reprehenderit consequuntur? Sit quaerat est officiis earum distinctio a reiciendis dolorem esse.
+        </p>
+        <button type="button" className='bg-gradient-to-br from-orange-400 to-orange-500 md:auto px-4 py-2 rounded-lg hover:shadow-lg transition-all ease-in-out duration-100  '>Order Now</button>
 
-      <MenuContainer />
-
-      {cartShow && <CartContainer />}
+      </div>
+      <div className='py-2 flex-1'></div>
     </div>
-  );
-};
+  )
+}
 
-export default MainContainer;
+export default MainContainer
