@@ -6,12 +6,12 @@ import App from "./App";
 import { StateProvider } from "./Context/StateProvider";
 import { initialState } from "./Context/initialState";
 import reducer from "./Context/reducer";
+
 ReactDOM.render(
-    <Router>
-        <StateProvider initialState={initialState} reducer={reducer}>
-        <App />
-        </StateProvider>
-       
-    </Router>
-,
- document.getElementById("root"));
+  <Router>
+    <StateProvider initialState={initialState} reducer={reducer}>
+      <App />
+    </StateProvider>
+  </Router>,
+  document.getElementById("root")
+);
