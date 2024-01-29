@@ -7,6 +7,7 @@ export const heroData = [
   {
     id: 1,
     name: "Icecream",
+    restaurantName: "Annapoorna",
     decp: "Chocolate & vanilla",
     price: "30",
     imageSrc: I1,
@@ -14,6 +15,7 @@ export const heroData = [
   {
     id: 2,
     name: "Strawberries",
+    restaurantName: "Haribhavan",
     decp: "Fresh Strawberries",
     price: "100",
     imageSrc: F1,
@@ -21,6 +23,7 @@ export const heroData = [
   {
     id: 3,
     name: "Chicken Kebab",
+    restaurantName: "Royal briyani",
     decp: "Mixed Kebab Plate",
     price: "200",
     imageSrc: C3,
@@ -28,6 +31,7 @@ export const heroData = [
   {
     id: 4,
     name: "Fish Kebab",
+    restaurantName: "vintage hotel",
     decp: "Mixed Fish Kebab",
     price: "250",
     imageSrc: Fi1,

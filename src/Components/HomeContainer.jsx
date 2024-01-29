@@ -41,6 +41,10 @@ const HomeContainer = () => {
                   {n.name}
                 </p>
 
+                <p className="text-base lg:text-xl font-semibold text-textColor mt-2 lg:mt-4">
+                  {n.restaurantName}
+                </p>
+
                 <p className="text-[12px] lg:text-sm text-lighttextGray font-semibold my-1 lg:my-3">
                   {n.decp}
                 </p>
