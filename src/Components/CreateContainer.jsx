@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { MdFastfood,MdCloudUpload,MdDelete ,MdFoodBank,MdAttachMoney} from "react-icons/md";
+import { MdFastfood,MdCloudUpload,MdDelete ,MdFoodBank,MdAttachMoney,MdRestaurant} from "react-icons/md";
 import { categories } from "../utils/data";
 import Loader from "./Loader";
 import {ref, uploadBytesResumable,getDownloadURL,deleteObject} from "firebase/storage"
@@ -14,6 +14,7 @@ const CreateContainer = () => {
   const [title, setTitle] = useState("");
   const [calories, setCalories] = useState("");
   const [price, setPrice] = useState("");
+  const [restaurantName, setRestaurantName] = useState("");
   const [category, setCategory] = useState(null);
   const [imageAsset, setImageAsset] = useState(null);
   const [fields, setFields] = useState(false);
@@ -80,7 +81,7 @@ const CreateContainer = () => {
   const saveDetails = () => {
     setIsLoading(true);
     try {
-      if (!title || !calories || !imageAsset || !price || !category) {
+      if (!title || !calories || !imageAsset || !price || !category || ! restaurantName) {
         setFields(true);
         setMsg("Required fields can't be empty");
         setAlertStatus("danger");
@@ -97,6 +98,7 @@ const CreateContainer = () => {
           calories: calories,
           qty: 1,
           price: price,
+          restaurantName: restaurantName,
         };
         saveItem(data);
         setIsLoading(false);
@@ -128,6 +130,7 @@ const CreateContainer = () => {
     setCalories("");
     setPrice("");
     setCategory("Select Category");
+    setRestaurantName("");
   };
 
   const fetchData = async () => {
@@ -266,6 +269,19 @@ const CreateContainer = () => {
               className="w-full h-full text-lg bg-transparent outline-none border-none placeholder:text-gray-400 text-textColor"
             />
           </div>
+        </div>
+
+
+        <div className="w-full py-2 border-b border-gray-300 flex items-center gap-2">
+          <MdRestaurant className="text-xl text-gray-700" />
+          <input
+            type="text"
+            required
+            value={restaurantName}
+            onChange={(e) => setRestaurantName(e.target.value)}
+            placeholder="Restaurant Name"
+            className="w-full h-full text-lg bg-transparent outline-none border-none placeholder:text-gray-400 text-textColor"
+          />
         </div>
 
 
