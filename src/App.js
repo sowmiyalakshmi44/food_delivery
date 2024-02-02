@@ -1,10 +1,5 @@
-import React,{userEffect} from "react";
-import {
-  MainContainer,
-  Header,
-  CreateContainer,
-  
-} from "./Components/index";
+import React, { useEffect } from "react";
+import { MainContainer, Header, CreateContainer } from "./Components/index";
 import { AnimatePresence } from "framer-motion";
 import { Route, Routes } from "react-router-dom";
 import { useStateValue } from "./Context/StateProvider";
@@ -13,7 +8,7 @@ import { actionType } from "./Context/reducer";
 
 const App = () => {
   const [{ foodItems }, dispatch] = useStateValue();
-  
+
   const fetchData = async () => {
     await getAllFoodItems().then((data) => {
       dispatch({
@@ -23,7 +18,7 @@ const App = () => {
     });
   };
 
-  userEffect(() => {
+  useEffect(() => {
     fetchData();
   }, []);
 
