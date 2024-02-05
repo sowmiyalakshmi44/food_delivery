@@ -1,5 +1,5 @@
 // import React from "react";
-import Logo from "../img/logo.png";
+import Logo from "../img/logo.jpg";
 import { MdShoppingBasket, MdAdd, MdLogout } from "react-icons/md";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { app } from "../firebase.config";
@@ -18,18 +18,22 @@ const Header = () => {
     {
       id: "home",
       name: "Home",
+      path: "/",
     },
     {
       id: "menu",
       name: "Menu",
+      path: "/menu",
     },
     {
       id: "aboutUs",
       name: "About Us",
+      path: "/about-us",
     },
     {
       id: "services",
       name: "Services",
+      path: "service",
     },
   ];
   const firebaseAuth = getAuth(app);
@@ -37,12 +41,11 @@ const Header = () => {
 
   const [isMenu, setIsMenu] = useState(false);
 
-
-  const [{ user,showCart,cartItems }, dispatch] = useStateValue();
+  const [{ user, showCart, cartItems }, dispatch] = useStateValue();
   const login = async () => {
     // let response = await signInWithPopup(firebaseAuth, provider);
     // console.log(response)
-    if(!user){
+    if (!user) {
       const {
         user: { refreshToken, providerData },
       } = await signInWithPopup(firebaseAuth, provider);
@@ -51,12 +54,9 @@ const Header = () => {
         user: providerData[0],
       });
       localStorage.setItem("user", JSON.stringify(providerData[0]));
-
-    }
-    else {
+    } else {
       setIsMenu(!isMenu);
     }
-    
   };
   const logout = () => {
     setIsMenu(false);
@@ -71,23 +71,25 @@ const Header = () => {
   return (
     <header className="fixed z-50 w-screen  p-3 px-4 md:p-6 md:px-16 bg-primary">
       <div className="hidden md:flex w-full h-full items-center justify-between ">
-        <Link t0="/" className="flex items-center gap-2">
+        <Link to="/" className="flex items-center gap-2">
           <img src={Logo} className="w-10 object-cover" alt="logo" />
-          <p className="text-headingColor text-xl font-bold">city</p>
+          <p className="text-headingColor text-xl font-bold">Coimbatore</p>
         </Link>
         <div className="flex items-center gap-8">
-          <motion.ul initial={{ opacity: 0, x: 200 }}
+          <motion.ul
+            initial={{ opacity: 0, x: 200 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: 200 }}
-             className="flex items-center gap-8 ml-auto">
+            className="flex items-center gap-8 ml-auto"
+          >
             {[...HEADER_MENU].map((item) => {
-              const { name = "", id = "" } = item || {};
+              const { name = "", id = "", path = " " } = item || {};
               return (
                 <li
                   key={id + "str"}
                   className="text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer"
                 >
-                  {name}
+                  <Link to={path}>{name}</Link>
                 </li>
               );
             })}
@@ -106,7 +108,7 @@ const Header = () => {
               alt="userprofile"
               onClick={login}
             />
-              {isMenu && (
+            {isMenu && (
               <motion.div
                 initial={{ opacity: 0, scale: 0.6 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -135,10 +137,10 @@ const Header = () => {
           </div>
         </div>
       </div>
-      
+
       {/* mobile */}
       <div className="flex md:hidden w-full h-full">
-      <div
+        <div
           className="relative flex items-center justify-center"
           onClick={showCart}
         >

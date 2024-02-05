@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { MdFastfood,MdCloudUpload,MdDelete ,MdFoodBank,MdAttachMoney,MdRestaurant} from "react-icons/md";
+import { MdFastfood,MdCloudUpload,MdDelete ,MdFoodBank,MdRestaurant} from "react-icons/md";
+import CurrencyRupeeIcon from '@mui/icons-material/CurrencyRupee';
 import { categories } from "../utils/data";
 import Loader from "./Loader";
 import {ref, uploadBytesResumable,getDownloadURL,deleteObject} from "firebase/storage"
@@ -259,7 +260,7 @@ const CreateContainer = () => {
           </div>
          
           <div className="w-full py-2 border-b border-gray-300 flex items-center gap-2">
-            <MdAttachMoney className="text-gray-700 text-2xl" />
+            <CurrencyRupeeIcon className="text-gray-700 text-2xl" />
             <input
               type="text"
               required
