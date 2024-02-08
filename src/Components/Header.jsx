@@ -70,7 +70,7 @@ const Header = () => {
 
   return (
     <header className="fixed z-50 w-screen  p-3 px-4 md:p-6 md:px-16 bg-primary">
-      <div className="hidden md:flex w-full h-full items-center justify-between ">
+      <div className="hidden md:flex w-full h-full items-center justify-between">
         <Link to="/" className="flex items-center gap-2">
           <img src={Logo} className="w-10 object-cover" alt="logo" />
           <p className="text-headingColor text-xl font-bold">Coimbatore</p>
@@ -87,7 +87,7 @@ const Header = () => {
               return (
                 <li
                   key={id + "str"}
-                  className="text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer"
+                  className="text-base text-textColor hover:text-pink-500 duration-100 transition-all ease-in-out cursor-pointer"
                 >
                   <Link to={path}>{name}</Link>
                 </li>

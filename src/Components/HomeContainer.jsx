@@ -19,7 +19,7 @@ const HomeContainer = () => {
             />
           </div>
         </div>
-        <p className="text-[2.5rem] md:text-[4.5rem] font-bold tracking-wide text-headingColor leading-loose">
+        <p className="text-[2.5rem] md:text-[4.5rem] font-bold tracking-wide text-headingColor leading-normal flex-col items-center justify-center">
           Delightful Meals Delivered to Your Doorstep in{" "}
           <span className="text-pink-500 text-[3rem] lg:text-[5rem] font-extrabold">
             Minutes
