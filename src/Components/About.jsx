@@ -7,7 +7,7 @@ const About = () => {
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
   };
   return (
-    <div className="p-8 md:p-16 w:90% bg-zinc-400 text-white" id="about-us">
+    <div className="p-8 md:p-16 w:90% bg-zinc-400 text-white" id="aboutus">
       <motion.h1
         className="text-4xl md:text-6xl font-bold mb-8 text-pink-500"
         variants={headingVariants}

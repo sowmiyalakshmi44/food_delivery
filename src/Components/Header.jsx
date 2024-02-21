@@ -26,14 +26,14 @@ const Header = () => {
       path: "/menu",
     },
     {
-      id: "aboutUs",
+      id: "aboutus",
       name: "About Us",
-      path: "/about-us",
+      path: "/aboutus",
     },
     {
       id: "services",
       name: "Services",
-      path: "service",
+      path: "services",
     },
   ];
   const firebaseAuth = getAuth(app);
@@ -41,7 +41,7 @@ const Header = () => {
 
   const [isMenu, setIsMenu] = useState(false);
 
-  const [{ user, showCart, cartItems }, dispatch] = useStateValue();
+  const [{ user, cartShow, cartItems }, dispatch] = useStateValue();
   const login = async () => {
     // let response = await signInWithPopup(firebaseAuth, provider);
     // console.log(response)
@@ -94,15 +94,21 @@ const Header = () => {
                   key={id + "str"}
                   className="text-base text-textColor hover:text-pink-500 duration-100 transition-all ease-in-out cursor-pointer"
                 >
-                  <Link to={path}>{name}</Link>
+                  <a href={`#${id}`}>{name}</a>
                 </li>
               );
             })}
           </motion.ul>
-          <div className="relative flex items-center justify-center " onClick={showCartIcon}>
+          <div
+            className="relative flex items-center justify-center "
+            onClick={showCartIcon}
+          >
             <MdShoppingBasket className="text-textColor text-2xl cursor-pointer" />
             <div className="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-cartNumBg flex items-center justify-center">
-              <p className="text-sm text-white font-semibold">2</p>
+              <p className="text-sm text-white font-semibold">
+                {" "}
+                {cartItems.length}
+              </p>
             </div>
           </div>
           <div className="relative">
@@ -144,10 +150,11 @@ const Header = () => {
       </div>
 
       {/* mobile */}
-      <div className="flex md:hidden w-full h-full" onClick={showCart}>
+
+      <div className="flex md:hidden w-full h-full" onClick={showCartIcon}>
         <div
           className="relative flex items-center justify-center"
-          onClick={showCart}
+          onClick={showCartIcon}
         >
           <MdShoppingBasket className="text-textColor text-2xl  cursor-pointer" />
           {cartItems && cartItems.length > 0 && (

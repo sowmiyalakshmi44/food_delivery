@@ -9,7 +9,6 @@ import CartContainer from "./CartContainer";
 import About from "./About";
 import Service from "./Service";
 
-
 const MainContainer = () => {
   const [{ foodItems, cartShow }, dispatch] = useStateValue();
   const [scrollValue, setScrollValue] = useState(0);
@@ -27,7 +26,7 @@ const MainContainer = () => {
       <section className="w-full my-6">
         <div className="w-full flex items-center justify-between">
           <p className="text-2xl font-semibold capitalize text-headingColor relative before:absolute before:rounded-lg before:content before:w-32 before:h-1 before:-bottom-2 before:left-0 before:bg-gradient-to-tr from-pink-400 to-pink-600 transition-all ease-in-out duration-100">
-            Explore the fruit juice & MilkShake
+            Explore the juice & MilkShake
           </p>
 
           <div className="hidden md:flex gap-3 items-center">
@@ -47,13 +46,11 @@ const MainContainer = () => {
             </motion.div>
           </div>
         </div>
-        
 
-        
         <RowContainer
           scrollValue={scrollValue}
           flag={true}
-          data={foodItems?.filter((n) => n.category === "milkshake")}
+          data={foodItems?.filter((n) => n.category === "milkshake" || n.category === "drinks" )}
         />
       </section>
 

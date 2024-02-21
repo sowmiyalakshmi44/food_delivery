@@ -8,7 +8,7 @@ const Service = () => {
   };
 
   return (
-    <div className="p-8 md:p-16 bg-zinc-400 text-white">
+    <div className="p-8 md:p-16 bg-zinc-400 text-white" id='services'>
       <motion.h1
         className="text-4xl md:text-6xl font-bold mb-8 text-pink-500"
         variants={headingVariants}

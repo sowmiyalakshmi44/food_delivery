@@ -25,7 +25,7 @@ const HomeContainer = () => {
             Minutes
           </span>{" "}
         </p>
-        
+
         {/* <a
           href="/order"
           className="bg-gradient-to-br from-pink-500 to-pink-700 md:auto px-4 py-2 rounded-lg hover:shadow-lg transition-all ease-in-out duration-100 text-white text-lg font-semibold"
